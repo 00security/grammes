@@ -27,8 +27,8 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/northwesternmutual/grammes/gremconnect"
-	"github.com/northwesternmutual/grammes/query/graph"
+	"github.com/00security/grammes/gremconnect"
+	"github.com/00security/grammes/query/graph"
 )
 
 var (

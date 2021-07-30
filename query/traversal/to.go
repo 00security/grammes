@@ -23,7 +23,7 @@ package traversal
 import (
 	"fmt"
 
-	"github.com/northwesternmutual/grammes/query/direction"
+	"github.com/00security/grammes/query/direction"
 )
 
 // http://tinkerpop.apache.org/docs/current/reference/#to-step

@@ -20,7 +20,7 @@
 
 package traversal
 
-import "github.com/northwesternmutual/grammes/query/operator"
+import "github.com/00security/grammes/query/operator"
 
 // http://tinkerpop.apache.org/docs/current/reference/#sack-step
 

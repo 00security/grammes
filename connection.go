@@ -23,8 +23,8 @@ package grammes
 import (
 	"errors"
 
-	"github.com/northwesternmutual/grammes/gremconnect"
-	"github.com/northwesternmutual/grammes/gremerror"
+	"github.com/00security/grammes/gremconnect"
+	"github.com/00security/grammes/gremerror"
 )
 
 // launchConnection will establish a connection to

@@ -20,7 +20,7 @@
 
 package model
 
-import "github.com/northwesternmutual/grammes/query"
+import "github.com/00security/grammes/query"
 
 type queryClient interface {
 	ExecuteQuery(query.Query) ([][]byte, error)
