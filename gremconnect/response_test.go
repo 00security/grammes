@@ -25,7 +25,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/northwesternmutual/grammes/gremerror"
+	"github.com/00security/grammes/gremerror"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

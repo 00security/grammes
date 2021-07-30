@@ -23,12 +23,12 @@ package manager
 import (
 	"encoding/json"
 
-	"github.com/northwesternmutual/grammes/logging"
-	"github.com/northwesternmutual/grammes/model"
-	"github.com/northwesternmutual/grammes/query"
-	"github.com/northwesternmutual/grammes/query/cardinality"
-	"github.com/northwesternmutual/grammes/query/datatype"
-	"github.com/northwesternmutual/grammes/query/multiplicity"
+	"github.com/00security/grammes/logging"
+	"github.com/00security/grammes/model"
+	"github.com/00security/grammes/query"
+	"github.com/00security/grammes/query/cardinality"
+	"github.com/00security/grammes/query/datatype"
+	"github.com/00security/grammes/query/multiplicity"
 )
 
 var (

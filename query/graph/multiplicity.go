@@ -22,7 +22,7 @@ package graph
 
 import (
 	"fmt"
-	"github.com/northwesternmutual/grammes/query/multiplicity"
+	"github.com/00security/grammes/query/multiplicity"
 )
 
 // Multiplicity sets teh multiplicity of an edge

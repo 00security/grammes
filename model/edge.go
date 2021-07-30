@@ -23,7 +23,7 @@ package model
 import (
 	"errors"
 
-	"github.com/northwesternmutual/grammes/query/traversal"
+	"github.com/00security/grammes/query/traversal"
 )
 
 // Edge is the object that builds a

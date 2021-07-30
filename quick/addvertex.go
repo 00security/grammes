@@ -21,8 +21,8 @@
 package quick
 
 import (
-	"github.com/northwesternmutual/grammes"
-	"github.com/northwesternmutual/grammes/query"
+	"github.com/00security/grammes"
+	"github.com/00security/grammes/query"
 )
 
 // AddAPIVertex will add a vertex to the graph belonging

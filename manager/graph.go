@@ -21,8 +21,8 @@
 package manager
 
 import (
-	"github.com/northwesternmutual/grammes/gremconnect"
-	"github.com/northwesternmutual/grammes/logging"
+	"github.com/00security/grammes/gremconnect"
+	"github.com/00security/grammes/logging"
 )
 
 // GraphQueryManager has all the function related to interacting with the graph.

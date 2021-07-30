@@ -23,12 +23,12 @@ package manager
 import (
 	"fmt"
 
-	"github.com/northwesternmutual/grammes/gremerror"
-	"github.com/northwesternmutual/grammes/logging"
-	"github.com/northwesternmutual/grammes/query/cardinality"
-	"github.com/northwesternmutual/grammes/query/datatype"
-	"github.com/northwesternmutual/grammes/query/graph"
-	"github.com/northwesternmutual/grammes/query/multiplicity"
+	"github.com/00security/grammes/gremerror"
+	"github.com/00security/grammes/logging"
+	"github.com/00security/grammes/query/cardinality"
+	"github.com/00security/grammes/query/datatype"
+	"github.com/00security/grammes/query/graph"
+	"github.com/00security/grammes/query/multiplicity"
 )
 
 type schemaManager struct {
