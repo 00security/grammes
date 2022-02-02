@@ -23,6 +23,8 @@ package gremconnect
 import (
 	"crypto/tls"
 	"errors"
+	"fmt"
+	"io"
 	"net/http"
 	"strings"
 	"sync"
@@ -70,22 +72,32 @@ func (ws *WebSocket) Connect() error {
 		ws.address = ws.address + "/gremlin"
 	}
 
-	ws.conn, _, err = dialer.Dial(ws.address, http.Header{})
+	var resp *http.Response
 
-	if err == nil {
-		ws.connected = true
-
-		handler := func(appData string) error {
-			ws.Lock()
-			ws.connected = true
-			ws.Unlock()
-			return nil
+	ws.conn, resp, err = dialer.Dial(ws.address, http.Header{})
+	if err != nil {
+		if resp != nil {
+			var bodyStr string
+			body, _ := io.ReadAll(resp.Body)
+			if body != nil {
+				bodyStr = string(body)
+			}
+			return fmt.Errorf("error (code: %d): %s, body: %s\n", resp.StatusCode, resp.Status, bodyStr)
 		}
+		return err
+	}
+	ws.connected = true
 
-		ws.conn.SetPongHandler(handler)
+	handler := func(appData string) error {
+		ws.Lock()
+		ws.connected = true
+		ws.Unlock()
+		return nil
 	}
 
-	return err
+	ws.conn.SetPongHandler(handler)
+
+	return nil
 }
 
 // IsConnected returns whether the given
