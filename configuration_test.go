@@ -22,6 +22,7 @@ package grammes
 
 import (
 	"crypto/tls"
+	"net/http"
 	"strconv"
 	"testing"
 	"time"
@@ -88,6 +89,21 @@ func TestWithMaxConcurrentMessages(t *testing.T) {
 	})
 }
 
+func TestWithMaxConcurrentRequests(t *testing.T) {
+	t.Parallel()
+
+	Convey("Given an int and dialer", t, func() {
+		m := 2
+		dialer := &mockDialerStruct{}
+		Convey("When Dial is called with max concurrent requests", func() {
+			c, _ := mockDial(dialer, WithMaxConcurrentRequests(m))
+			Convey("Then the client semaphore should be set", func() {
+				So(c.requestSemaphore, ShouldNotBeNil)
+			})
+		})
+	})
+}
+
 func TestWithAuthUserPass(t *testing.T) {
 	t.Parallel()
 
@@ -97,6 +113,22 @@ func TestWithAuthUserPass(t *testing.T) {
 		dialer := &mockDialerStruct{}
 		Convey("And Dial is called with username and password", func() {
 			_, err := mockDial(dialer, WithAuthUserPass(user, pass))
+			Convey("Then no error should be encountered", func() {
+				So(err, ShouldBeNil)
+			})
+		})
+	})
+}
+
+func TestWithHTTPAuth(t *testing.T) {
+	t.Parallel()
+
+	Convey("Given an auth provider and dialer", t, func() {
+		dialer := &mockDialerStruct{}
+		Convey("And Dial is called with username and password", func() {
+			_, err := mockDial(dialer, WithHTTPAuth(func(request *http.Request) error {
+				return nil
+			}))
 			Convey("Then no error should be encountered", func() {
 				So(err, ShouldBeNil)
 			})

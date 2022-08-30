@@ -22,7 +22,7 @@ package gremconnect
 
 import (
 	"encoding/json"
-
+	"errors"
 	"github.com/00security/grammes/gremerror"
 )
 
@@ -47,12 +47,22 @@ func MarshalResponse(msg []byte) (Response, error) {
 		return Response{}, gremerror.NewUnmarshalError("MarshalResponse", msg, err)
 	}
 
-	var (
-		status = j["status"].(map[string]interface{})
-		result = j["result"].(map[string]interface{})
-		code   = status["code"].(float64)
-		resp   = Response{Code: int(code)}
-	)
+	status, ok := j["status"].(map[string]interface{})
+	if !ok {
+		return Response{}, gremerror.NewUnmarshalError("MarshalResponse", msg, errors.New("error parsing 'status' field from response"))
+	}
+	result, ok := j["result"].(map[string]interface{})
+	if !ok {
+		return Response{}, gremerror.NewUnmarshalError("MarshalResponse", msg, errors.New("error parsing 'result' field from response"))
+	}
+
+	code, ok := status["code"].(float64)
+	if !ok {
+		return Response{}, gremerror.NewUnmarshalError("MarshalResponse", msg, errors.New("error parsing 'status.code' field from response"))
+	}
+
+	resp := Response{Code: int(code)}
+
 	message, _ := status["message"].(string)
 
 	err = responseDetectError(resp.Code, message)
@@ -61,11 +71,9 @@ func MarshalResponse(msg []byte) (Response, error) {
 	} else {
 		resp.Data = result["data"]
 	}
-	
-	if val, ok := j["requestId"]; ok {
-		if vval, ok := val.(string); ok {
-			resp.RequestID = vval
-		}
+	resp.RequestID, ok = j["requestId"].(string)
+	if !ok {
+		return Response{}, gremerror.NewUnmarshalError("MarshalResponse", msg, errors.New("error parsing 'requestId' field from response"))
 	}
 
 	return resp, nil
