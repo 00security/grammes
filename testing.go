@@ -28,7 +28,6 @@ import (
 	"github.com/gorilla/websocket"
 
 	"github.com/00security/grammes/gremconnect"
-	"github.com/00security/grammes/query/graph"
 )
 
 var (
@@ -166,7 +165,7 @@ func (*mockDialerStruct) SetWriteBufferResizing(bool)          {}
 func (*mockDialerStruct) SetReadBufferSize(int)                {}
 func (*mockDialerStruct) SetHandshakeTimeout(time.Duration)    {}
 func (*mockDialerStruct) SetCompression(bool)                  {}
-func (*mockDialerStruct) SetTLSConfig(*tls.Config)      {}
+func (*mockDialerStruct) SetTLSConfig(*tls.Config)             {}
 
 func mockDial(conn gremconnect.Dialer, cfgs ...ClientConfiguration) (*Client, error) {
 	c := setupClient()
@@ -203,7 +202,7 @@ func (*mockDialerWriteError) SetWriteBufferResizing(bool)          {}
 func (*mockDialerWriteError) SetReadBufferSize(int)                {}
 func (*mockDialerWriteError) SetHandshakeTimeout(time.Duration)    {}
 func (*mockDialerWriteError) SetCompression(bool)                  {}
-func (*mockDialerWriteError) SetTLSConfig(*tls.Config)      {}
+func (*mockDialerWriteError) SetTLSConfig(*tls.Config)             {}
 
 type mockDialerAuthError gremconnect.WebSocket
 
@@ -235,7 +234,7 @@ func (*mockDialerAuthError) SetWriteBufferResizing(bool)          {}
 func (*mockDialerAuthError) SetReadBufferSize(int)                {}
 func (*mockDialerAuthError) SetHandshakeTimeout(time.Duration)    {}
 func (*mockDialerAuthError) SetCompression(bool)                  {}
-func (*mockDialerAuthError) SetTLSConfig(*tls.Config)      {}
+func (*mockDialerAuthError) SetTLSConfig(*tls.Config)             {}
 
 type mockDialerReadError gremconnect.WebSocket
 
@@ -267,4 +266,4 @@ func (*mockDialerReadError) SetWriteBufferResizing(bool)          {}
 func (*mockDialerReadError) SetReadBufferSize(int)                {}
 func (*mockDialerReadError) SetHandshakeTimeout(time.Duration)    {}
 func (*mockDialerReadError) SetCompression(bool)                  {}
-func (*mockDialerReadError) SetTLSConfig(*tls.Config)      {}
+func (*mockDialerReadError) SetTLSConfig(*tls.Config)             {}
