@@ -20,7 +20,7 @@
 
 package model
 
-import "encoding/json"
+import "github.com/goccy/go-json"
 
 // VertexValue contains the 'value' data
 // from the Vertex object.

@@ -21,9 +21,10 @@
 package grammes
 
 import (
-	"encoding/json"
 	"errors"
 	"time"
+
+	"github.com/goccy/go-json"
 
 	"github.com/00security/grammes/gremconnect"
 )
@@ -120,7 +121,6 @@ func (c *Client) deleteResponse(id string) {
 
 // saveResponse makes the response available for retrieval by the requester. Mutexes are used for thread safety.
 func (c *Client) saveResponse(resp gremconnect.Response) {
-
 	var container []interface{}
 
 	// Lock this mutex to prevent adding to a deleted request in case of timeout and leaking data

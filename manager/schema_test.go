@@ -21,9 +21,10 @@
 package manager
 
 import (
-	"encoding/json"
 	"errors"
 	"testing"
+
+	"github.com/goccy/go-json"
 
 	. "github.com/smartystreets/goconvey/convey"
 
@@ -38,7 +39,7 @@ func TestAddEdgeLabel(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabel is called", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabel(m, "testlabel")
 			Convey("Then the error returned should be nil", func() {
 				So(err, ShouldBeNil)
@@ -52,7 +53,7 @@ func TestAddEdgeLabelQueryError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return nil, errors.New("ERROR") }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabel is called and encounters a querying error", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabel(m, "testlabel")
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -70,7 +71,7 @@ func TestAddEdgeLabelUnmarshalError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabel is called and encounters an unmarshalling error", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabel(m, "testlabel")
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -84,7 +85,7 @@ func TestAddEdgeLabels(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabels is called", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabels(m, "testlabel")
 			Convey("Then the error returned should be nil", func() {
 				So(err, ShouldBeNil)
@@ -98,7 +99,7 @@ func TestAddEdgeLabelsLabelError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabels is called and encounters a querying error", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabels(m, "testlabel1", "testlabel2")
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -112,7 +113,7 @@ func TestAddEdgeLabelsInvalidMultiplicity(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabels is called with an invalid multiplicity", func() {
-			var m = "BADMULT"
+			m := "BADMULT"
 			_, err := sm.AddEdgeLabels(m, "testlabel1")
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -126,7 +127,7 @@ func TestAddEdgeLabelsInvalidLabel(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabels is called with an invalid label", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabels(m, 1234)
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -140,7 +141,7 @@ func TestAddEdgeLabelsQueryingError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return nil, errors.New("ERROR") }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddEdgeLabels is called and encounters a querying error", func() {
-			var m = multiplicity.Simple
+			m := multiplicity.Simple
 			_, err := sm.AddEdgeLabels(m, "testlabel")
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -154,8 +155,8 @@ func TestAddPropertyKey(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddPropertyKey is called", func() {
-			var d = datatype.String
-			var c = cardinality.Single
+			d := datatype.String
+			c := cardinality.Single
 			_, err := sm.AddPropertyKey("testprop", d, c)
 			Convey("Then the error returned should be nil", func() {
 				So(err, ShouldBeNil)
@@ -169,8 +170,8 @@ func TestAddPropertyKeyQueryError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return nil, errors.New("ERROR") }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddPropertyKey is called and encounters a querying error", func() {
-			var d = datatype.String
-			var c = cardinality.Single
+			d := datatype.String
+			c := cardinality.Single
 			_, err := sm.AddPropertyKey("testprop", d, c)
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)
@@ -188,8 +189,8 @@ func TestAddPropertyKeyUnmarshalError(t *testing.T) {
 		execute := func(string) ([][]byte, error) { return [][]byte{[]byte(vertexResponse)}, nil }
 		sm := newSchemaManager(logging.NewNilLogger(), execute)
 		Convey("When AddPropertyKey is called and encounters an unmarshalling error", func() {
-			var d = datatype.String
-			var c = cardinality.Single
+			d := datatype.String
+			c := cardinality.Single
 			_, err := sm.AddPropertyKey("testprop", d, c)
 			Convey("Then the error should be returned", func() {
 				So(err, ShouldNotBeNil)

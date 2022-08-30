@@ -21,10 +21,11 @@
 package manager
 
 import (
-	"encoding/json"
 	"errors"
 	"testing"
 	"time"
+
+	"github.com/goccy/go-json"
 
 	. "github.com/smartystreets/goconvey/convey"
 

@@ -21,9 +21,10 @@
 package gremconnect
 
 import (
-	"encoding/json"
 	"errors"
 	"testing"
+
+	"github.com/goccy/go-json"
 
 	"github.com/00security/grammes/gremerror"
 

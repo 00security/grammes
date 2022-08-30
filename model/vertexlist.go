@@ -20,7 +20,7 @@
 
 package model
 
-import "encoding/json"
+import "github.com/goccy/go-json"
 
 // VertexList is used for unmarshalling after querying.
 // We use this instead of []Vertex for Gremlin v3.0 compatibility.

@@ -21,9 +21,10 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"io/ioutil"
+
+	"github.com/goccy/go-json"
 
 	"go.uber.org/zap"
 
@@ -44,11 +45,9 @@ func prepareAPI(path string) (grammes.APIData, error) {
 	return apiData, err
 }
 
-var (
-	// addr is used for holding the connection IP address.
-	// for example this could be, "ws://127.0.0.1:8182"
-	addr string
-)
+// addr is used for holding the connection IP address.
+// for example this could be, "ws://127.0.0.1:8182"
+var addr string
 
 func main() {
 	flag.StringVar(&addr, "h", "", "Connection IP")

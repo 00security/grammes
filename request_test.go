@@ -21,11 +21,12 @@
 package grammes
 
 import (
-	"encoding/json"
 	"errors"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/goccy/go-json"
 
 	"github.com/google/uuid"
 	. "github.com/smartystreets/goconvey/convey"
@@ -35,7 +36,6 @@ import (
 )
 
 func TestExecuteRequest(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 	}()
@@ -92,7 +92,6 @@ func TestWriteWorkerErrorWriting(t *testing.T) {
 }
 
 func TestExecuteRequestErrorPreparingRequest(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 		gremPrepareRequest = gremconnect.PrepareRequest
@@ -121,7 +120,6 @@ func TestExecuteRequestErrorPreparingRequest(t *testing.T) {
 }
 
 func TestExecuteRequestErrorPackagingRequest(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 		gremPackageRequest = gremconnect.PackageRequest
@@ -147,7 +145,6 @@ func TestExecuteRequestErrorPackagingRequest(t *testing.T) {
 }
 
 func TestExecuteRequestErrorRetrievingResponse(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 		jsonMarshalData = json.Marshal
@@ -188,7 +185,6 @@ func TestExecuteRequestErrorRetrievingResponse(t *testing.T) {
 }
 
 func TestAuthenticate(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 	}()
@@ -210,7 +206,6 @@ func TestAuthenticate(t *testing.T) {
 }
 
 func TestAuthenticateAuthError(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 	}()
@@ -232,7 +227,6 @@ func TestAuthenticateAuthError(t *testing.T) {
 }
 
 func TestAuthenticateErrorPraparingAuthRequest(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 		gremPrepareAuthRequest = gremconnect.PrepareAuthRequest
@@ -259,7 +253,6 @@ func TestAuthenticateErrorPraparingAuthRequest(t *testing.T) {
 }
 
 func TestAuthenticateErrorPackagingRequest(t *testing.T) {
-
 	defer func() {
 		gremconnect.GenUUID = uuid.NewUUID
 		gremPackageRequest = gremconnect.PackageRequest

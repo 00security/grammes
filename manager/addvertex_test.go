@@ -21,9 +21,10 @@
 package manager
 
 import (
-	"encoding/json"
 	"errors"
 	"testing"
+
+	"github.com/goccy/go-json"
 
 	. "github.com/smartystreets/goconvey/convey"
 
@@ -36,24 +37,26 @@ var testVertex = model.Vertex{
 	Value: model.VertexValue{
 		ID:    1234,
 		Label: "testLabel",
-		Properties: model.PropertyMap{"testDetail": []model.Property{
-			{
-				Type: "testType",
-				Value: model.PropertyValue{
-					ID: model.PropertyID{
-						Type:  "testIDType",
-						Value: "testRelID",
-					},
-					Value: model.ValueWrapper{
-						PropertyDetailedValue: model.PropertyDetailedValue{
-							Value: 1234,
-							Type:  "testType",
+		Properties: model.PropertyMap{
+			"testDetail": []model.Property{
+				{
+					Type: "testType",
+					Value: model.PropertyValue{
+						ID: model.PropertyID{
+							Type:  "testIDType",
+							Value: "testRelID",
 						},
-						Partial: true,
+						Value: model.ValueWrapper{
+							PropertyDetailedValue: model.PropertyDetailedValue{
+								Value: 1234,
+								Type:  "testType",
+							},
+							Partial: true,
+						},
+						Label: "testLabel",
 					},
-					Label: "testLabel",
 				},
-			}},
+			},
 		},
 	},
 }

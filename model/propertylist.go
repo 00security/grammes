@@ -21,7 +21,7 @@
 package model
 
 import (
-	"encoding/json"
+	"github.com/goccy/go-json"
 )
 
 // PropertyList is used for unmarshalling after querying.

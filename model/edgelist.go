@@ -20,7 +20,7 @@
 
 package model
 
-import "encoding/json"
+import "github.com/goccy/go-json"
 
 // EdgeList is used for unmarshalling after querying.
 // We use this instead of []Edge for Gremlin v3.0 compatibility.

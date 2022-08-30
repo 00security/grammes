@@ -21,9 +21,10 @@
 package gremconnect
 
 import (
-	"encoding/json"
 	"errors"
+
 	"github.com/00security/grammes/gremerror"
+	"github.com/goccy/go-json"
 )
 
 // Response is the structure representation of
