@@ -3,9 +3,9 @@ package manager
 import (
 	"fmt"
 	"github.com/google/uuid"
-	"github.com/northwesternmutual/grammes/logging"
-	"github.com/northwesternmutual/grammes/query"
-	"github.com/northwesternmutual/grammes/query/traversal"
+	"github.com/00security/grammes/logging"
+	"github.com/00security/grammes/query"
+	"github.com/00security/grammes/query/traversal"
 )
 
 // sessionManager handles the sessions actions to the server.
