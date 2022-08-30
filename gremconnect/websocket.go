@@ -23,10 +23,8 @@ package gremconnect
 import (
 	"crypto/tls"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"fmt"
-	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -69,7 +67,6 @@ func (ws *WebSocket) Connect() error {
 	dialer := websocket.Dialer{
 		TLSClientConfig:  ws.tlsConfig,
 		WriteBufferSize:     ws.writeBufferSize,
-		WriteBufferResizing: ws.writeBufferResizing,
 		ReadBufferSize:      ws.readBufferSize,
 		HandshakeTimeout:    ws.handshakeTimeout,
 		EnableCompression:   ws.enableCompression,
